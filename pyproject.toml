@@ -3,6 +3,9 @@ name = "game"
 version = "0.1.0"
 dependencies = ["arcade"]
 
+[project.scripts]
+game = "game.cli:run"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
