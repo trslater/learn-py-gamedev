@@ -3,6 +3,9 @@ name = "game"
 version = "0.1.0"
 dependencies = ["arcade"]
 
+[project.optional-dependencies]
+dev = ["nuitka"]
+
 [project.scripts]
 game = "game.cli:run"
 
