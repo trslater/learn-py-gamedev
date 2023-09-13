@@ -4,7 +4,7 @@ version = "0.1.0"
 dependencies = ["arcade"]
 
 [project.optional-dependencies]
-dev = ["nuitka"]
+dev = ["pyinstaller"]
 
 [project.scripts]
 game = "game.cli:run"
