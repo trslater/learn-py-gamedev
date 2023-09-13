@@ -1,2 +1,10 @@
+import arcade
+
+from game.config import config
+from game.game import Game
+
+
 def run():
-    print("Starting game...")
+    game = Game(config())
+    
+    arcade.run()
