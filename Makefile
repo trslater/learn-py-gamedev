@@ -1,4 +1,4 @@
-.PHONY: dist install dev
+.PHONY: dist install dev clean
 
 dist:
 	pyinstaller scripts/run.py \
@@ -11,3 +11,8 @@ install:
 
 dev:
 	pip install -e '.[dev]'
+
+clean:
+	rm -fr ./build
+	rm -fr ./dist
+	rm game.spec
