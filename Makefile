@@ -1,4 +1,4 @@
-.PHONY: install dev
+.PHONY: dist install dev
 
 dist:
 	pyinstaller scripts/run.py \
