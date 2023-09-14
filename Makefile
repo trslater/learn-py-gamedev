@@ -2,7 +2,7 @@
 
 dist:
 	pyinstaller scripts/run.py \
-		--add-data "src/game/config.toml:." \
+		--add-data "src/config.toml:." \
 		--onefile \
 		--windowed \
 		--name game
