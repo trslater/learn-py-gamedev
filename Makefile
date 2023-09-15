@@ -7,6 +7,9 @@ dist:
 		--windowed \
 		--name game
 
+deploy:
+	butler push dist trslater/test-project:osx-alpha
+
 install:
 	pip install -e .
 
