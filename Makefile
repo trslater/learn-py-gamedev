@@ -3,6 +3,7 @@
 dist:
 	pyinstaller scripts/run.py \
 		--add-data "src/config.toml:." \
+		--add-data "assets:assets" \
 		--onefile \
 		--windowed \
 		--name game

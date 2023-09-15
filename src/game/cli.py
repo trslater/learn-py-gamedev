@@ -6,5 +6,6 @@ from game.game import Game
 
 def run():
     game = Game(config())
+    game.setup()
     
     arcade.run()
