@@ -32,6 +32,7 @@ class Game(arcade.Window):
             "assets/player.png",
             scale=self.pixel_size,
             image_width=16, image_height=16)
+        self.scene.add_sprite_list_before("Player", "Walls")
         self.scene.add_sprite("Player", self.player)
 
         self.physics_engine = arcade.PhysicsEngineSimple(
