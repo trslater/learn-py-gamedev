@@ -26,11 +26,7 @@ class Game(arcade.Window):
 
         self.scene = arcade.Scene.from_tilemap(self.map)
 
-        self.player = arcade.Sprite(
-            "assets/player.png",
-            scale=self.pixel_size,
-            image_width=16, image_height=16)
-        self.scene.add_sprite("Player", self.player)
+        self.player = self.scene.get_sprite_list("Player")[0]
 
         self.physics_engine = arcade.PhysicsEngineSimple(
             self.player, self.scene.get_sprite_list("Boundaries"))
@@ -63,7 +59,7 @@ class Game(arcade.Window):
         if player_top_bound > camera_top_bound:
             new_y = player_top_bound - self.camera.viewport_height
 
-        self.camera.move((new_x, new_y))
+        self.camera.move_to((new_x, new_y), 0.2)
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
