@@ -3,3 +3,6 @@ width = 320
 height = 200
 title = "Python Game Dev"
 pixel_size = 3
+
+[player]
+speed = 4

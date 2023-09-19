@@ -5,6 +5,7 @@ import arcade
 class Game(arcade.Window):
     def __init__(self, conf):
         self.pixel_size = conf["screen"]["pixel_size"]
+        self.player_speed = conf["player"]["speed"]
 
         super().__init__(
             conf["screen"]["width"]*conf["screen"]["pixel_size"],
@@ -43,13 +44,13 @@ class Game(arcade.Window):
         """Called whenever a key is pressed."""
 
         if key == arcade.key.UP or key == arcade.key.W:
-            self.player.change_y = 5
+            self.player.change_y = self.player_speed
         elif key == arcade.key.DOWN or key == arcade.key.S:
-            self.player.change_y = -5
+            self.player.change_y = -self.player_speed
         elif key == arcade.key.LEFT or key == arcade.key.A:
-            self.player.change_x = -5
+            self.player.change_x = -self.player_speed
         elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player.change_x = 5
+            self.player.change_x = self.player_speed
     
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key."""
