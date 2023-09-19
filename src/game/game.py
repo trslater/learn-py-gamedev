@@ -37,13 +37,33 @@ class Game(arcade.Window):
         
         self.camera = arcade.Camera(self.width, self.height)
 
-    def center_camera_to_player(self):
-        screen_center_x = self.player.center_x - (self.camera.viewport_width / 2)
-        screen_center_y = self.player.center_y - (
-            self.camera.viewport_height / 2
-        )
+    def adjust_camera(self):
+        player_left_bound = self.player.center_x - 64*self.pixel_size
+        player_right_bound = self.player.center_x + 64*self.pixel_size
+        player_bottom_bound = self.player.center_y - 64*self.pixel_size
+        player_top_bound = self.player.center_y + 64*self.pixel_size
+        
+        camera_left_bound = self.camera.position.x
+        camera_right_bound = self.camera.position.x + self.camera.viewport_width
+        camera_bottom_bound = self.camera.position.y
+        camera_top_bound = self.camera.position.y + self.camera.viewport_height
 
-        self.camera.move_to((screen_center_x, screen_center_y))
+        new_x = self.camera.position.x
+        new_y = self.camera.position.y
+
+        if player_left_bound < camera_left_bound:
+            new_x = player_left_bound
+
+        if player_right_bound > camera_right_bound:
+            new_x = player_right_bound - self.camera.viewport_width
+
+        if player_bottom_bound < camera_bottom_bound:
+            new_y = player_bottom_bound
+
+        if player_top_bound > camera_top_bound:
+            new_y = player_top_bound - self.camera.viewport_height
+
+        self.camera.move((new_x, new_y))
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
@@ -73,7 +93,7 @@ class Game(arcade.Window):
         """Movement and game logic"""
 
         self.physics_engine.update()
-        self.center_camera_to_player()
+        self.adjust_camera()
 
     def on_draw(self):
         self.camera.use()
