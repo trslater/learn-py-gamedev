@@ -12,15 +12,13 @@ class Game(arcade.Window):
             conf["screen"]["title"],
             antialiasing=False)
         
-        arcade.set_background_color(arcade.color.BROWN_NOSE)
-
         self.map = None
         self.scene = None
         self.player = None
         self.camera = None
 
     def setup(self):
-        self.map = arcade.load_tilemap("maps/test.json", self.pixel_size, {
+        self.map = arcade.load_tilemap("maps/test3.json", self.pixel_size, {
             "Walls": {
                 "use_spatial_hash": True,
             },
@@ -32,11 +30,10 @@ class Game(arcade.Window):
             "assets/player.png",
             scale=self.pixel_size,
             image_width=16, image_height=16)
-        self.scene.add_sprite_list_before("Player", "Walls")
         self.scene.add_sprite("Player", self.player)
 
         self.physics_engine = arcade.PhysicsEngineSimple(
-            self.player, self.scene.get_sprite_list("Walls"))
+            self.player, self.scene.get_sprite_list("Boundaries"))
         
         self.camera = arcade.Camera(self.width, self.height)
 
